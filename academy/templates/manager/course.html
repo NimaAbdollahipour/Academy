@@ -1,0 +1,72 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+
+<div class="container">
+	<h2 class="text-center">Add New Course</h2>
+	<form action="{{url_for('manager.course')}}" method="post">
+	    <label for='title'>Title</label><br />
+	    <input type='text' name='title' id='title' class="w-100" required><br />
+
+	    <label for='fee'>Fee</label><br />
+	    <input type='number' name='fee' id='fee' class="w-100" required><br />
+
+	    <label for='time'>Time</label><br />
+	    <input type='time' name='time' id='time' class="w-100" required><br />
+		<hr/>
+	    <input type='checkbox' name='available' id='available'>
+	    <label for='available'>Available</label><br />
+	    <hr/>
+
+
+		<label for='link'>Link</label><br />
+	    <input type='text' name='link' id='link' class="w-100" required><br />
+
+	    <label for='teacher_id'>Teacher</label><br />
+	    <select name='teacher_id' id='teacher_id' class="w-100" required>
+	    	{% for teacher in teachers %}
+	    	<option value="{{teacher[0].id}}">{{teacher[0].name}} | {{teacher[1]}}</option>
+	    	{% endfor %}
+	    	
+	    </select><br />
+
+	    <label for='day'>Day</label><br />
+	    <select name='day' id='day' class="w-100" required>
+	    	<option value="1">Saturday</option>
+	    	<option value="2">Sunday</option>
+	    	<option value="3">Monday</option>
+	    	<option value="4">Tuesday</option>
+	    	<option value="5">Wednesday</option>
+	    	<option value="6">Thursday</option>
+	    	<option value="7">Friday</option>
+	    </select><br />
+
+	    <label for='grade'>Grade</label><br />
+	    <select name='grade' id='grade' class="w-100" required>
+	    	<option value="1">First Grade</option>
+	    	<option value="2">Second Grade</option>
+	    	<option value="3">Third Grade</option>
+	    </select><br />
+
+	    <div class="text-center m-5">
+	    	<button class="btn btn-primary m-1">add</button>
+	    	<a class="btn btn-dark m-1" href="{{url_for('manager.dashboard')}}">dashboard</a></div>
+	</form>
+	<hr/>
+	<h2 class="text-center">Courses</h2>
+	{% for course in courses %}
+		<div class="card p-3 mb-1">
+			<p><strong>Title: </strong>{{course[0].title}}</p>
+			<p><strong>Fee: </strong>{{course[0].fee}}</p>
+			<p><strong>Time: </strong>{{course[0].time}}</p>
+			<p><strong>Available: </strong>{{course[0].available}}</p>
+			<p><strong>Day:</strong>{{course[1]}}</p>
+			<p><strong>Grade:</strong>{{course[2]}}</p>
+			<p><strong>Teacher:</strong>{{course[3].name}}</p>
+		</div>
+	{% endfor%}
+</div>
+
+{% endblock %}

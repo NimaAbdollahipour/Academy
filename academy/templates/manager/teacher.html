@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+	<h2 class="text-center">Add New Teacher</h2>
+	<form action="{{url_for('manager.teacher')}}" method="post">
+	    <label for='name'>Name</label><br />
+	    <input type='text' name='name' id='name' class="w-100" required><br />
+
+	    <label for='username'>Username</label><br />
+	    <input type='text' name='username' id='username' class="w-100" required><br />
+
+	    <label for='password'>Password</label><br />
+	    <input type='passowrd' name='password' id='password' class="w-100" required><br />
+
+	    <label for='email'>Email</label><br />
+	    <input type='email' name='email' id='email' class="w-100" required><br />
+
+	    <label for='phone'>Phone</label><br />
+	    <input type='tel' name='phone' id='phone' class="w-100" required><br />
+
+	    <label for='major'>Major</label><br />
+	    <select name='major' id='major' class="w-100" required>
+	    	{% for major in majors %}
+	    		<option value="{{major.id}}">{{major.name}}</option>
+	    	{% endfor %}
+	    </select><br/>
+
+	    <label for='detail'>Detail</label><br />
+	    <textarea name='detail' id='detail' class="w-100" required style="resize: none;"></textarea><br />
+
+	    <div class="text-center m-5">
+	    	<button class="btn btn-primary m-1">add</button>
+	    	<a class="btn btn-dark m-1" href="{{url_for('manager.dashboard')}}">dashboard</a></div>
+	</form>
+	<hr/>
+	<h2 class="text-center">Teachers</h2>
+	{% for teacher in teachers%}
+		<div class="card p-3 mb-1">
+			<p><strong>Name: </strong>{{teacher[0].name}}</p>
+			<p><strong>Username: </strong>{{teacher[0].username}}</p>
+			<p><strong>Password: </strong>{{teacher[0].password}}</p>
+			<p><strong>Phone: </strong>{{teacher[0].info_t.phone}}</p>
+			<p><strong>Email: </strong>{{teacher[0].info_t.email}}</p>
+			<p><strong>Major: </strong>{{teacher[1].name}}</p>
+			<p><strong>Detail: </strong>{{teacher[0].info_t.detail}}</p>
+		</div>
+	{% endfor%}
+</div>
+{% endblock %}

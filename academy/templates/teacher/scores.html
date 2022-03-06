@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="card p-3">
+        <table class="table">
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Score</th>
+            </tr>
+            {% for score in scores %}
+            <tr>
+                <td>{{score[0].student_id}}</td>
+                <th>{{score[1].name}}</th>
+                <th>{{score[0].score}}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="text-center p-3"><a href="{{url_for('teacher.course')}}" class="btn btn-dark">course page</a></div>
+</div>
+{% endblock %}

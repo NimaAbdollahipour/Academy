@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h2 class="text-center">Adding Question:</h2>
+    <form action="{{url_for('teacher.question')}}" method="post">
+        <label for="body">Body:</label>
+        <textarea class="w-100" style="resize: none;" name="body" id="body"></textarea>
+        <label for="body">Option 1:</label>
+        <textarea class="w-100" style="resize: none;" name="option1" id="option1"></textarea>
+        <label for="body">Option 2:</label>
+        <textarea class="w-100" style="resize: none;" name="option2" id="option2"></textarea>
+        <label for="body">Option 3:</label>
+        <textarea class="w-100" style="resize: none;" name="option3" id="option3"></textarea>
+        <label for="body">Option 4:</label>
+        <textarea class="w-100" style="resize: none;" name="option4" id="option4"></textarea>
+        <select class="w-100" name="answer">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <div class="text-center p-3">
+            <button class="btn btn-primary">add question</button>
+            <a href="{{url_for('teacher.exam')}}" class="btn btn-dark">return to exam</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

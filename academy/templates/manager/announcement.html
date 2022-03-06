@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="card p-3">
+        <h3 class="text-center p-3">New Announcement</h3>
+        <form method="post" action="{{url_for('manager.announcement')}}">
+            <label for='title'>Title</label><br/>
+            <input type="text" name="title" id='title' class="w-100 mb-2"/>
+            <label for='body'>Body</label><br/>
+            <textarea name="body" id='body' class="w-100 mb-2" style="resize: none;"></textarea>
+            <div class="text-center"><button class="btn btn-primary">add</button>
+                <a href="{{url_for('manager.dashboard')}}" class="btn btn-dark">dashboard</a>
+            </div>
+        </form>
+    </div>
+    <hr />
+    <h3 class="text-center p-3">Announcements</h3>
+    {% for a in announcements %}
+    <div class="card p-3">
+        <p><strong>Title: </strong> {{a.title}} </p>
+        <p><strong>Date-Time: </strong> {{a.date_time}} </p>
+        <p><strong>Body: </strong> {{a.body}} </p>
+        <div class="text-center">
+            <a href='{{url_for("manager.del_announce")}}?id={{a.id}}' class="btn btn-danger m-2">delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

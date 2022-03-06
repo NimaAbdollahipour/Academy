@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <h2 class="text-center bg-light p-2 mb-5">manager dashboard</h2>
+            <a href="{{url_for('manager.teacher')}}" class="text-center btn btn-dark mb-3 w-100">Teachers</a>
+            <a href="{{url_for('manager.student')}}" class="text-center btn btn-dark mb-3 w-100">Students</a>
+            <a href="{{url_for('manager.course')}}" class="text-center btn btn-dark mb-3 w-100">Courses</a>
+            <a href="{{url_for('manager.announcement')}}" class="text-center btn btn-dark mb-3 w-100">Announcements</a>
+            <a href="{{url_for('manager.select_course')}}" class="text-center btn btn-dark mb-3 w-100">Add Student to Course</a>
+            <a href="" class="text-center btn btn-dark mb-3 w-100">Messages</a>
+        <div class="text-center mb-5"><a class="btn btn-danger" href="{{url_for('auth.logout')}}" style="margin-top: 12rem;">log out</a></div>
+    </div>
+{% endblock %}

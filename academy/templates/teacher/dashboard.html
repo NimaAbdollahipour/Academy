@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h3 class="text-center">Teacher Dashboard</h3>
+    <div class="card bg-light p-3 mb-2"><h5>User: {{name}}</h5></div>
+    {% for course in courses %}
+        <div class="card p-3 mb-3">
+            <p><strong>Course Title:</strong>{{course.title}}</p>
+            <a href="{{url_for('teacher.course')}}?id={{course.id}}" class="btn btn-primary">Go to course page</a>
+        </div>
+    {% endfor %}
+    <div class="text-center"><a href="{{url_for('auth.logout')}}" class="btn btn-danger" style="margin-top: 6rem;">logout</a></div>
+</div>
+{% endblock %}

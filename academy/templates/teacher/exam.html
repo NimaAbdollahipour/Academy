@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% block head %}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h2 class="text-cetnter">New Exam</h2>
+    <form method="post" action="{{url_for('teacher.exam')}}">
+        <label for="title">Title:</label><br/>
+        <input type="text" name="title" id="title" class="w-100">
+        <label for="date">Date:</label><br/>
+        <input type="date" name="date" id="date" class="w-100">
+        <label for="time">Time:</label><br/>
+        <input type="time" name="time" id="time" class="w-100">
+        <label for="number_of_questions">Number of Questions:</label><br/>
+        <input type="number" name="number_of_questions" id="number_of_questions" class="w-100" max="100" min="1">
+        <label for="duration">Duration:</label><br/>
+        <input type="number" name="duration" id="duration" class="w-100">
+        <label for="max_score">Maximum Score:</label><br/>
+        <input type="number" name="max_score" id="max_score" class="w-100">
+        <div class="text-center p-3">
+            <button class="btn btn-primary">add exam</button>
+            <a href="{{url_for('teacher.course')}}" class="btn btn-dark">course page</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

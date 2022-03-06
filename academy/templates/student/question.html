@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="card p-3">
+        <h3 class="p-3 bg-info text-light">Question {{question.order}}:</h3>
+        <div class="card p-3">
+            <p><strong>{{question.body}}</strong></p>
+            <form method="post" action="{{url_for('student.question')}}">
+                <div class="card pt-2 pb-2"><div><input type="radio" name="option" id='1' class="m-1" value="1" required/>{{question.option_1}}</div></div>
+                <div class="card pt-2 pb-2"><div><input type="radio" name="option" id='2' class="m-1" value="2"/>{{question.option_2}}</div></div>
+                <div class="card pt-2 pb-2"><div><input type="radio" name="option" id='3' class="m-1" value="3"/>{{question.option_3}}</div></div>
+                <div class="card pt-2 pb-2"><div><input type="radio" name="option" id='4' class="m-1" value="4"/>{{question.option_4}}</div></div>
+                <div class="card"><button class="btn btn-primary">send answer</button></div>
+                <div class="card"><a href="{{url_for('student.course')}}" class="btn btn-danger">quit exam</a></div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

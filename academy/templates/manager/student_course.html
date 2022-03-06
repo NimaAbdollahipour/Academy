@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="card p-3">
+        <h2>Add Student to Course</h2>
+        <form action="{{url_for('manager.course_student')}}" method="post">
+            <select name="student" class="w-100 mb-5" size='5'>
+                {% for s in students %}
+                <option value="{{s.id}}">{{s.name}}</option>
+                {% endfor %}
+            </select>
+            <div class="text-center"><button class="btn btn-primary">add student</button></div>
+        </form>
+    </div>
+    <div class="text-center p-3"><a href="{{url_for('manager.select_course')}}" class="btn btn-dark">select course</a></div>
+</div>
+{% endblock %}

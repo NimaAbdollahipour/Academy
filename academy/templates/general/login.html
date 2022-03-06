@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% block body %}
+
+<div class="p-3 bg-light m-auto mt-5" style="width:24rem;">
+    <h3 class="mb-5">Log in to your account!</h3>
+    <form method="post" action="{{url_for('auth.login')}}">
+        <label for="username">Username</label><br/>
+        <input class="w-100" name='username' type="text" id='username'/><br/>
+        <label for="password">Password</label><br/>
+        <input class="w-100" name='password' type="password" id='password'/><br/>
+        <div class="m-5 text-center"><button class="btn btn-primary">log in</button></div>
+    </form>
+</div>
+{% endblock %}

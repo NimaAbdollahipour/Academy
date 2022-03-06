@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="card p-3 mb-2">
+        <p><strong>Course Title:</strong>{{course.title}}</p>
+        <a href="{{course.link}}" class="btn btn-primary mb-3">Enter the Class</a>
+        <a href="{{url_for('teacher.exam')}}" class="btn btn-primary mb-3">Add Exam</a>
+    </div>
+    <div class="card p-3 mb-2">
+        <h2 class="text-center">Exams</h2>
+        {% for exam in exams %}
+        <div class="card p-3">
+            <h4><strong>Title: </strong> {{exam.title}}</h4>
+            <p><strong>Date: </strong> {{exam.date}}</p>
+            <p><strong>Number of Questions: </strong> {{exam.number_of_questions}}</p>
+            <p><strong>Duration: </strong> {{exam.duration}} minutes</p>
+            <a href="{{url_for('teacher.scores')}}?exam_id={{exam.id}}" class="btn btn-warning mb-3">Scores</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center p-3"><a href="{{url_for('teacher.dashboard')}}" class="btn btn-dark">Dashboard</a></div>
+</div>
+{% endblock %}

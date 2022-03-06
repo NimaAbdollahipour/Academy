@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="card p-3 mt-5">
+        <h3>Title: {{exam.title}}</h3>
+        <p>Date: {{exam.date}}</p>
+        <p>Number of Questions: {{exam.number_of_questions}}</p>
+        <p>Duration: {{exam.duration}}</p>
+        {% if available %}
+            <a href="{{url_for('student.question')}}?id={{exam.id}}&q=1" class="btn btn-primary">Take the Exam</a>
+        {% else %}
+            <p class="alert alert-danger">Your Score in this Exam: {{score}}</p>
+        {% endif %}
+        <a href="{{url_for('student.course')}}" class="btn btn-dark mt-2">Back</a>
+    </div>
+
+</div>
+{% endblock %}

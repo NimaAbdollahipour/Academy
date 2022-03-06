@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+	<h2 class="text-center">Add New student</h2>
+	<form action="{{url_for('manager.student')}}" method="post">
+	    <label for='name'>Name</label><br />
+	    <input type='text' name='name' id='name' class="w-100" required><br />
+
+	    <label for='username'>Username</label><br />
+	    <input type='text' name='username' id='username' class="w-100" required><br />
+
+	    <label for='password'>Password</label><br />
+	    <input type='passowrd' name='password' id='password' class="w-100" required><br />
+
+	    <label for='email'>Email</label><br />
+	    <input type='email' name='email' id='email' class="w-100" required><br />
+
+	    <label for='phone'>Phone</label><br />
+	    <input type='tel' name='phone' id='phone' class="w-100" required><br />
+
+	    <label for='major'>Major</label><br />
+	    <select name='major' id='major' class="w-100" required>
+	    	{% for major in majors %}
+	    		<option value="{{major.id}}">{{major.name}}</option>
+	    	{% endfor %}
+	    </select><br/>
+
+	    <label for='grade'>Grade</label><br />
+	    <select name='grade' id='grade' class="w-100" required>
+	    	<option value="1">First Grade</option>
+	    	<option value="2">Second Grade</option>
+	    	<option value="3">Third Grade</option>
+	    </select><br />
+
+	    <div class="text-center m-5">
+	    	<button class="btn btn-primary m-1">add</button>
+	    	<a class="btn btn-dark m-1" href="{{url_for('manager.dashboard')}}">dashboard</a></div>
+	</form>
+	<hr/>
+	<h2 class="text-center">students</h2>
+	{% for student in students%}
+		<div class="card p-3 mb-1">
+			<p><strong>Name: </strong>{{student[0].name}}</p>
+			<p><strong>Username: </strong>{{student[0].username}}</p>
+			<p><strong>Password: </strong>{{student[0].password}}</p>
+			<p><strong>Phone: </strong>{{student[0].info_s.phone}}</p>
+			<p><strong>Email: </strong>{{student[0].info_s.email}}</p>
+			<p><strong>Major: </strong>{{student[1].name}}</p>
+			<p><strong>Detail: </strong>{{student[0].info_s.grade}}</p>
+		</div>
+	{% endfor%}
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="card p-3">
+        <h2 class="text-center">Select the Course</h2>
+        {% for course in courses %}
+            <a href="{{url_for('manager.select_course')}}?id={{course.id}}" class="btn btn-primary mb-2">{{course.title}}</a>
+        {% endfor %}
+    </div>
+    <div class="text-center p-3"><a href="{{url_for('manager.dashboard')}}" class="btn btn-dark">dashboard</a></div>
+</div>
+{% endblock %}
